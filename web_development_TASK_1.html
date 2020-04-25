@@ -1,0 +1,276 @@
+<html>
+<head>
+<style>
+h1{
+	text-decoration-line: underline;
+}
+body{
+	background-color:black;
+	color:#40C000;
+}
+h2{
+	padding-right:500px;
+}
+marquee
+{
+	padding:10 px;
+	color:#FF40FF;
+}
+.table1{
+
+	border:5px solid white;
+	padding: 25px;
+	background-color:#008080;
+	border-spacing: 1px;
+	empty-cells: hide;
+}
+.table2{
+
+	border:5px solid white;
+	padding: 2px;
+	background-color:#008080;
+	border-spacing: 1px;
+	font-size:5px;
+	empty-cells: hide;
+}
+
+.table2 th{
+
+	border:2px solid #FF4000;
+	padding: 8px;
+	border-spacing: 1px;
+	text-align:center;
+   	color: #C0FF40;
+	font-size:23px;
+		
+}
+.table1 th,td{
+
+	border:2px solid #FF4000;
+	padding: 20px;
+	border-spacing: 1px;
+	color: yellow;
+	min-width=50%;
+	font-size:50px;
+	text-align:center;
+		
+}
+</style>
+<title>BEGINNER'S MODE</title>
+</head>
+<body>
+<audio id="myAudio">
+  <source src="type_sound.ogg" type="audio/ogg">
+  <source src="type_sound.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<audio id="Audio">
+  <source src="buzz.ogg" type="audio/ogg">
+  <source src="buzz.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<h1><center>TILES SWEEPER</center></h1>
+
+<marquee><b><b>Instructions</b> : Welcome to TILES SWEEPER This is single player OFFLINE game where you have to click the tiles represented by numbers in ascending order!!!</b></marquee>
+<hr style="height:4px;border-width:0;color:gray;background-color:gray">
+<br>
+<br>
+
+<center>
+<div class="student"style="float:right">
+<table class="table2" id="myTable" border="5">
+            <tr>
+                <th>Time</th>
+	    </tr>
+</table>
+</div>
+
+<div class="master">
+
+
+
+<p id="demo"></p>
+
+<h2><p onclick="refresh()">New game</p></h2>
+
+
+<table class="table1" id="table" border="1">
+            
+                                
+            
+            <tr>
+                <td  id="1" onclick="changetext(this);playAudio();alter(id)"></td>
+                <td  id="2" onclick="playAudio();changetext(this);alter(id)"></td>
+                <td  id="3" onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="4" onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="5" onclick="playAudio();changetext(this);alter(id)"></td>
+            </tr>
+                
+            <tr>
+		<td  id="6"  onclick="changetext(this);playAudio();alter(id)"></td>
+                <td  id="7"  onclick="playAudio();changetext(this);alter(id)"></td>
+                <td  id="8"  onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="9"  onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="10" onclick="playAudio();changetext(this);alter(id)"></td>
+                
+            </tr>
+            
+            <tr>
+                <td  id="11" onclick="changetext(this);playAudio();alter(id)"></td>
+                <td  id="12" onclick="playAudio();changetext(this);alter(id)"></td>
+                <td  id="13" onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="14" onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="15" onclick="playAudio();changetext(this);alter(id)"></td>
+	    
+	    <tr>
+                <td  id="16" onclick="changetext(this);playAudio();alter(id)"></td>
+                <td  id="17" onclick="playAudio();changetext(this);alter(id)"></td>
+                <td  id="18" onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="19" onclick="playAudio();changetext(this);alter(id)"></td>
+		<td  id="20" onclick="playAudio();changetext(this);alter(id)"></td>
+             </tr>                     
+        </table>
+
+</div>
+</center>
+
+<script>
+var array = shuffle([[1,7,19,14,4],
+	    	    [16,5,3,12,10],
+	    	    [6,2,9,18,13],
+	    	    [11,17,8,15,20]]);
+
+var s=1;
+
+table = document.getElementById("table");
+         
+        
+        // rows
+        for(var i = 0; i < table.rows.length; i++)
+        {
+          // cells
+          for(var j = 0; j < table.rows[i].cells.length; j++)
+          {
+		
+              table.rows[i].cells[j].innerHTML =array[i][j];
+          }
+        }
+	
+function shuffle(array) {
+    var i = array.length,
+        j = 0,
+        temp;
+
+    while (i--) {
+
+        j = Math.floor(Math.random() * (i+1));
+
+        // swap randomly chosen element with current element
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+
+    }
+
+    return array;
+}
+function refresh(){
+	location.reload(1);
+}
+var u = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  	u.play(); 
+} 
+var v=  document.getElementById("Audio");
+function buzz(){
+ 	v.play();
+} 
+var startTime, endTime;
+
+function start() {
+  	startTime = new Date();
+};
+
+function end() {
+  	endTime = new Date();
+  	var timeDiff = endTime - startTime; //in ms
+  	// strip the ms
+  	timeDiff /= 1000;
+
+  	// get seconds 
+   	 var seconds = Math.round(timeDiff);
+  	alert("Congratulations\n you finished  the Game  in  "+ seconds +" seconds");
+ 	Score(seconds);
+}
+ 
+
+
+   
+
+
+ function changetext(id) {
+	 var x=id.innerHTML;
+	
+	if(id.innerHTML==s){
+	        if(x==1){
+			id.innerHTML = +x + +20;
+			start()
+			}
+		else if(x>1 && x<=20){
+			id.innerHTML = +x + +20;
+			
+			}
+	    	else if(x==40){
+			id.innerHTML ="" ;
+			end()
+			
+		 	}
+		else{
+			id.innerHTML =" ";
+			
+			} 	
+
+s=s+1;
+	
+}
+
+	else{
+		buzz();
+		alert("Ooop's\nPRESS THE NUMBERS IN CORRECT ORDER");
+		
+	}
+
+}
+		
+
+	
+
+function Score(sec){
+	var exist = localStorage.getItem('timescore');
+
+	exist = exist? exist.split(',') : [];
+
+	exist.push(sec);
+	exist.sort();
+
+
+localStorage.setItem('timescore', exist.toString());
+
+
+  	var table = document.getElementById("myTable");
+  	for(var i=4;i>=0;i--){
+  		var row = table.insertRow(1);
+  		var cell1 = row.insertCell(0);
+    		cell1.innerHTML =exist[i] ;
+	}
+	 
+		
+}
+
+function alter(id1){
+	document.getElementById(id1).style.color = 'white';
+}
+</script>
+</body>
+</html>
